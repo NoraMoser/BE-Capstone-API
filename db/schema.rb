@@ -22,10 +22,8 @@ ActiveRecord::Schema.define(version: 20171205211831) do
 
   create_table "questions", force: :cascade do |t|
     t.string "questions"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "responses", force: :cascade do |t|
