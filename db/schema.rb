@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205211831) do
+ActiveRecord::Schema.define(version: 20171206224526) do
 
   create_table "answers", force: :cascade do |t|
     t.string "drop_down_items"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20171205211831) do
     t.string "last_name"
     t.string "grade_level"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
