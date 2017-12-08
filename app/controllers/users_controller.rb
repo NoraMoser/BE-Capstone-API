@@ -1,5 +1,16 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_request 
   before_action :set_user, only: [:show, :update, :destroy]
+  
+  def authenticate 
+    command = AuthenticateUser.call(params[:email], params[:password]) 
+    
+    if command.success? 
+      render json: { auth_token: command.result } 
+    else 
+      render json: { error: command.errors }, status: :unauthorized 
+    end 
+  end
 
   # GET /users
   def index
@@ -18,9 +29,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      render json: @user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @user.errors
     end
   end
 
@@ -37,6 +48,8 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
