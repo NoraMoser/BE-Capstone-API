@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create', as: 'signup'
 
   post 'authenticate', to: 'users#authenticate', as: 'authenticate'
+
+  # get 'questions' to: 'questions#index' as: 'questions'
+
+  # post 'responses', to: 'responses#create' as: 'responses'
   
 end
