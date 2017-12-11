@@ -15,13 +15,22 @@ class ResponsesController < ApplicationController
 
   # POST /responses
   def create
-    @response = Response.new(response_params)
 
-    if @response.save
-      render json: @response, status: :created, location: @response
-    else
-      render json: @response.errors, status: :unprocessable_entity
+    params.permit!
+    params[:responses].each do |objects|
+
+    puts params[:responses]
+    @response = Response.new(objects)
+
+    puts @response
+    @response.save
     end
+
+    # if @response.save
+      render json: @response, status: :created, location: @response
+    # else
+    #   render json: @response.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /responses/1
@@ -46,6 +55,6 @@ class ResponsesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def response_params
-      params.require(:response).permit(:question_id, :user_id, :answer_id)
+      params.permit(:responses => [])
     end
 end
