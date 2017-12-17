@@ -8,7 +8,7 @@ class CreateUserBooks < ActiveRecord::Migration[5.1]
       t.string :tags
       t.string :rating
       t.boolean :has_read
-      t.references :user, foreign_key: true
+      t.references :user
 
       t.timestamps
     end
