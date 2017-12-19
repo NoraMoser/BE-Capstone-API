@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206224526) do
+ActiveRecord::Schema.define(version: 20171219155049) do
 
   create_table "answers", force: :cascade do |t|
     t.string "drop_down_items"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20171206224526) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "to_buy"
     t.index ["user_id"], name: "index_user_books_on_user_id"
   end
 
